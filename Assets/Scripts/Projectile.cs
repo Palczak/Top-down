@@ -8,14 +8,15 @@ public class Projectile : MonoBehaviour
     private Movement _movement;
     public int MaxExistenceTime;
     private int _existenceTime;
-    private CircleCollider2D _colider;
+    private Collider2D _collider;
     public float Angle;
     public GameObject Shooter;
 
     private void Start()
     {
         _existenceTime = 0;
-        _colider = GetComponent<CircleCollider2D>();
+        _collider = GetComponent<Collider2D>();
+        _collider.isTrigger = true;
         _movement = GetComponent<Movement>();
         //Angle = Angle * Mathf.Rad2Deg;
         transform.position = Shooter.transform.position + Shooter.transform.up;
@@ -25,7 +26,12 @@ public class Projectile : MonoBehaviour
 
     private void Update()
     {
-        if(_colider.IsTouchingLayers(8))
+        
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.gameObject.name == "Wall")
         {
             Destroy(gameObject);
         }
