@@ -2,12 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerFighting : MonoBehaviour
+public class Combat : MonoBehaviour
 {
+    public Projectile Projectile;
+
     // Start is called before the first frame update
     private void Start()
     {
-        
+           
     }
 
     // Update is called once per frame
@@ -19,5 +21,11 @@ public class PlayerFighting : MonoBehaviour
     private void FixedUpdate()
     {
         
+    }
+
+    public void Shoot(GameObject shooter)
+    {
+        Projectile projectile = Instantiate(Projectile);
+        projectile.Shooter = shooter;
     }
 }
