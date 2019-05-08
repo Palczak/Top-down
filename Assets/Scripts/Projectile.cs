@@ -31,7 +31,12 @@ public class Projectile : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.gameObject.name == "Wall")
+        //if(collision.gameObject.name == "Wall")
+        //{
+        //    Destroy(gameObject);
+        //}
+
+        if (collision.gameObject.tag == "Terrain")
         {
             Destroy(gameObject);
         }
