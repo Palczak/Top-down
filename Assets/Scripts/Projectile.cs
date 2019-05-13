@@ -19,7 +19,7 @@ public class Projectile : MonoBehaviour
         _collider.isTrigger = true;
         _movement = GetComponent<Movement>();
         //Angle = Angle * Mathf.Rad2Deg;
-        transform.position = Shooter.transform.position + Shooter.transform.up;
+        transform.position = Shooter.transform.position;
         transform.rotation = Shooter.transform.rotation;
         //transform.Rotate()
     }
