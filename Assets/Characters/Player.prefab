@@ -162,6 +162,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Projectile: {fileID: 7732128421791588789, guid: 75fc760ee7c24e84eb80da9436c7c04b,
     type: 3}
-  FireRateRPM: 1200
+  FireRateRPM: 600
   _pauseBetweenShots: 0
   _shotTimer: 0
