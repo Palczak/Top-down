@@ -97,9 +97,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MaxExistenceTime: 80
-  Collider: {fileID: 0}
   Angle: 0
   Shooter: {fileID: 0}
+  Damage: 1
 --- !u!50 &-5564991555967031901
 Rigidbody2D:
   serializedVersion: 4

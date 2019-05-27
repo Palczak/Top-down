@@ -11,6 +11,8 @@ public class Projectile : MonoBehaviour
     private Collider2D _collider;
     public float Angle;
     public GameObject Shooter;
+    public int Damage;
+    private bool _used;
 
     private void Start()
     {
@@ -22,6 +24,7 @@ public class Projectile : MonoBehaviour
         transform.position = Shooter.transform.position;
         transform.rotation = Shooter.transform.rotation;
         //transform.Rotate()
+        _used = false;
     }
 
     private void Update()
@@ -31,15 +34,20 @@ public class Projectile : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        //if(collision.gameObject.name == "Wall")
-        //{
-        //    Destroy(gameObject);
-        //}
-
         if (collision.gameObject.tag == "Terrain")
         {
             Destroy(gameObject);
         }
+        else if (collision.gameObject.tag == "Character" && collision.gameObject != Shooter)
+        {
+            if(!_used)
+            {
+                collision.gameObject.GetComponent<Combat>().TakeHit(Damage);
+                _used = true;
+            }
+            Destroy(gameObject);
+        }
+        //Destroy(gameObject);
     }
 
     // Update is called once per frame

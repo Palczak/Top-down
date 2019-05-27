@@ -6,6 +6,9 @@ public class Combat : MonoBehaviour
 {
     public Projectile Projectile;
     public uint FireRateRPM;
+    public int MaxHitPoints;
+    [SerializeField]
+    private int _currentHitPoints;
     [SerializeField]
     private uint _pauseBetweenShots;
     [SerializeField]
@@ -19,6 +22,8 @@ public class Combat : MonoBehaviour
         //1 minute have 3000ticks
         _pauseBetweenShots = 3000 / FireRateRPM;
         _shotTimer = 0;
+
+        _currentHitPoints = MaxHitPoints;
     }
 
     // Update is called once per frame
@@ -32,6 +37,15 @@ public class Combat : MonoBehaviour
         if(_shotTimer <= _pauseBetweenShots)
         {
             _shotTimer++;
+        }
+    }
+
+    public void TakeHit(int damage)
+    {
+        _currentHitPoints = _currentHitPoints - damage;
+        if(_currentHitPoints == 0)
+        {
+            Destroy(gameObject);
         }
     }
 
