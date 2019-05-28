@@ -15,7 +15,10 @@ public class PlayerControl : MonoBehaviour
 
     private void Update()
     {
-        _movement.LookAt(Input.mousePosition);
+        //_movement.LookAt(Input.mousePosition);
+        //transform.LookAt(Input.mousePosition);
+        //transform.position = Input.mousePosition;
+        _movement.LookAt(Camera.main.ScreenToWorldPoint(Input.mousePosition));
         if (Input.GetButton("Fire1"))
         {
             _combat.Shoot(gameObject);

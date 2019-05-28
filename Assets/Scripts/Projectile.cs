@@ -56,7 +56,7 @@ public class Projectile : MonoBehaviour
         _existenceTime++;
         if (_existenceTime < MaxExistenceTime)
         {
-            _movement.Forward();
+            _movement.Move(transform.up);
         }
         else
         {

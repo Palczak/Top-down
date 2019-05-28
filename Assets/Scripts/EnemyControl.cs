@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -20,4 +21,5 @@ public class EnemyControl : MonoBehaviour
     {
         _movement.LookAt(Target.transform.position);
     }
+
 }
