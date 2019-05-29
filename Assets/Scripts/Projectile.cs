@@ -38,7 +38,7 @@ public class Projectile : MonoBehaviour
         {
             Destroy(gameObject);
         }
-        else if (collision.gameObject.tag == "Character" && collision.gameObject != Shooter)
+        else if ((collision.gameObject.tag == "Character" || collision.gameObject.tag == "Player") && collision.gameObject != Shooter)
         {
             if(!_used)
             {

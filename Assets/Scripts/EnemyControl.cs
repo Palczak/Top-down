@@ -19,7 +19,11 @@ public class EnemyControl : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-        _movement.LookAt(Target.transform.position);
+        if(Target != null)
+        {
+            _movement.LookAt(Target.transform.position);
+            _combat.Shoot(gameObject);
+        }
     }
 
 }
