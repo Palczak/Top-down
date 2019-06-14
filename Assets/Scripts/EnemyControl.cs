@@ -9,14 +9,12 @@ public class EnemyControl : MonoBehaviour
     private Movement _movement;
     private Combat _combat;
 
-    // Start is called before the first frame update
     private void Start()
     {
         _movement = GetComponent<Movement>();
         _combat = GetComponent<Combat>();
     }
 
-    // Update is called once per frame
     private void Update()
     {
         if(Target != null)

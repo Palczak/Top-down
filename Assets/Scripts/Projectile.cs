@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
-    // Start is called before the first frame update
     private Movement _movement;
     public int MaxExistenceTime;
     private int _existenceTime;
@@ -20,10 +19,8 @@ public class Projectile : MonoBehaviour
         _collider = GetComponent<Collider2D>();
         _collider.isTrigger = true;
         _movement = GetComponent<Movement>();
-        //Angle = Angle * Mathf.Rad2Deg;
         transform.position = Shooter.transform.position;
         transform.rotation = Shooter.transform.rotation;
-        //transform.Rotate()
         _used = false;
     }
 
@@ -47,7 +44,6 @@ public class Projectile : MonoBehaviour
             }
             Destroy(gameObject);
         }
-        //Destroy(gameObject);
     }
 
     // Update is called once per frame

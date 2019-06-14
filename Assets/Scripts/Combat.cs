@@ -17,19 +17,13 @@ public class Combat : MonoBehaviour
     // Start is called before the first frame update
     private void Start()
     {
-        //fixed update 1tick every 0.02sec
-        //1 second have 50ticks
-        //1 minute have 3000ticks
+        //fixed update 1 tick every 0.02 sec
+        //1 second have 50 ticks
+        //1 minute have 3000 ticks
         _pauseBetweenShots = 3000 / FireRateRPM;
         _shotTimer = 0;
 
         _currentHitPoints = MaxHitPoints;
-    }
-
-    // Update is called once per frame
-    private void Update()
-    {
-        
     }
 
     private void FixedUpdate()

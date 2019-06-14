@@ -9,12 +9,9 @@ public class Movement : MonoBehaviour
     [SerializeField]
     private float _angle;
 
-
     private Rigidbody2D _rigidBody;
-    
-
     public float Speed;
-    // Start is called before the first frame update
+
     private void Start()
     {
         
@@ -25,15 +22,9 @@ public class Movement : MonoBehaviour
         _rigidBody = GetComponent<Rigidbody2D>();
     }
 
-    // Update is called once per frame
     private void Update()
     {
         _angle = transform.rotation.z;
-    }
-
-    private void FixedUpdate()
-    {
-        
     }
 
     public void Move(Vector2 inputVector)

@@ -6,7 +6,6 @@ public class PlayerControl : MonoBehaviour
 {
     private Movement _movement;
     private Combat _combat;
-    // Start is called before the first frame update
     void Start()
     {
         _movement = GetComponent<Movement>();
@@ -15,9 +14,6 @@ public class PlayerControl : MonoBehaviour
 
     private void Update()
     {
-        //_movement.LookAt(Input.mousePosition);
-        //transform.LookAt(Input.mousePosition);
-        //transform.position = Input.mousePosition;
         _movement.LookAt(Camera.main.ScreenToWorldPoint(Input.mousePosition));
         if (Input.GetButton("Fire1"))
         {
@@ -25,7 +21,6 @@ public class PlayerControl : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
     void FixedUpdate()
     {
         _movement.Move(new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")));
