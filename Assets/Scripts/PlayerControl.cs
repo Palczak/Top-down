@@ -4,12 +4,16 @@ using UnityEngine;
 
 public class PlayerControl : MonoBehaviour
 {
+    private GameObject _player;
     private Movement _movement;
     private Combat _combat;
+    private Camera _playerCamera;
     void Start()
     {
+        _player = GameObject.FindWithTag("Player");
         _movement = GetComponent<Movement>();
         _combat = GetComponent<Combat>();
+        _playerCamera = FindObjectOfType<Camera>();
     }
 
     private void Update()
@@ -19,10 +23,20 @@ public class PlayerControl : MonoBehaviour
         {
             _combat.Shoot(gameObject);
         }
+        MoveCamera();
     }
 
-    void FixedUpdate()
+    private void FixedUpdate()
     {
         _movement.Move(new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")));
+    }
+
+    private void MoveCamera()
+    {
+        var x = _player.transform.position.x;
+        var y = _player.transform.position.y;
+        var z = -10;
+
+        _playerCamera.transform.position = new Vector3(x, y, z);
     }
 }
