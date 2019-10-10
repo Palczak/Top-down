@@ -5,7 +5,7 @@ using UnityEngine;
 public class Projectile : MonoBehaviour
 {
     private Movement _movement;
-    public Float MaxExistenceTime;
+    public float MaxExistenceTime;
     private float _existenceTime;
     private Collider2D _collider;
     public float Angle;

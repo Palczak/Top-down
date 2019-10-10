@@ -18,17 +18,13 @@ public class PlayerControl : MonoBehaviour
 
     private void Update()
     {
+        _movement.Move(new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")));
         _movement.LookAt(Camera.main.ScreenToWorldPoint(Input.mousePosition));
         if (Input.GetButton("Fire1"))
         {
             _combat.Shoot(gameObject);
         }
         MoveCamera();
-    }
-
-    private void FixedUpdate()
-    {
-        _movement.Move(new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")));
     }
 
     private void MoveCamera()

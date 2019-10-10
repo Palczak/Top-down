@@ -22,20 +22,23 @@ public class Movement : MonoBehaviour
 
     public void Move(Vector2 inputVector)
     {
-        inputVector.x *= Speed;
-        inputVector.y *= Speed;
+        inputVector *= Speed;
+        inputVector *= (Time.deltaTime * 2);
+        //inputVector *= inputVector.normalized;
+        Vector3 moveVector = new Vector3(inputVector.x, inputVector.y);
+       
         if(inputVector.x != 0 && inputVector.y != 0)
         {
             inputVector.x /= Mathf.Sqrt(2);
             inputVector.y /= Mathf.Sqrt(2);
         }
-        _rigidBody.velocity = inputVector;
+        _rigidBody.MovePosition(transform.position + moveVector);
         _velocity = Mathf.Sqrt(Mathf.Pow(_rigidBody.velocity.x, 2) + Mathf.Pow(_rigidBody.velocity.y, 2));
     }
 
     public void Forward()
     {
-        _rigidBody.velocity = transform.up * Speed;
+        Move(transform.up);
     }
 
     public void LookAt(Vector2 inputVector)
