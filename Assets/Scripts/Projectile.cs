@@ -5,8 +5,8 @@ using UnityEngine;
 public class Projectile : MonoBehaviour
 {
     private Movement _movement;
-    public int MaxExistenceTime;
-    private int _existenceTime;
+    public Float MaxExistenceTime;
+    private float _existenceTime;
     private Collider2D _collider;
     public float Angle;
     public GameObject Shooter;
@@ -26,7 +26,16 @@ public class Projectile : MonoBehaviour
 
     private void Update()
     {
-        
+        _existenceTime += Time.deltaTime;
+        if (_existenceTime < MaxExistenceTime)
+        {
+            _movement.Move(transform.up);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -42,20 +51,6 @@ public class Projectile : MonoBehaviour
                 collision.gameObject.GetComponent<Combat>().TakeHit(Damage);
                 _used = true;
             }
-            Destroy(gameObject);
-        }
-    }
-
-    // Update is called once per frame
-    private void FixedUpdate()
-    {
-        _existenceTime++;
-        if (_existenceTime < MaxExistenceTime)
-        {
-            _movement.Move(transform.up);
-        }
-        else
-        {
             Destroy(gameObject);
         }
     }

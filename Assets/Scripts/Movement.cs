@@ -12,11 +12,6 @@ public class Movement : MonoBehaviour
 
     private void Start()
     {
-        
-    }
-
-    private void Awake()
-    {
         _rigidBody = GetComponent<Rigidbody2D>();
     }
 
