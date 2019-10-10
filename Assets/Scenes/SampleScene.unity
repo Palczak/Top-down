@@ -135,7 +135,7 @@ PrefabInstance:
     - target: {fileID: 6700016366918970932, guid: a46f56422e207604d81fffbdcfc91900,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6700016366918970932, guid: a46f56422e207604d81fffbdcfc91900,
         type: 3}
@@ -196,6 +196,11 @@ PrefabInstance:
         type: 3}
       propertyPath: MaxHitPoints
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7619396077951985239, guid: a46f56422e207604d81fffbdcfc91900,
+        type: 3}
+      propertyPath: m_Mass
+      value: 0.7853982
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a46f56422e207604d81fffbdcfc91900, type: 3}
