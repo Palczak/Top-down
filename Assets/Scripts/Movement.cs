@@ -24,7 +24,6 @@ public class Movement : MonoBehaviour
     {
         inputVector *= Speed;
         inputVector *= (Time.deltaTime * 2);
-        //inputVector *= inputVector.normalized;
         Vector3 moveVector = new Vector3(inputVector.x, inputVector.y);
        
         if(inputVector.x != 0 && inputVector.y != 0)

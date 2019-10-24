@@ -5,8 +5,6 @@ using UnityEngine;
 public class Projectile : MonoBehaviour
 {
     private Movement _movement;
-    public float MaxExistenceTime;
-    private float _existenceTime;
     private Collider2D _collider;
     public float Angle;
     public GameObject Shooter;
@@ -15,7 +13,6 @@ public class Projectile : MonoBehaviour
 
     private void Start()
     {
-        _existenceTime = 0;
         _collider = GetComponent<Collider2D>();
         _collider.isTrigger = true;
         _movement = GetComponent<Movement>();
@@ -26,27 +23,18 @@ public class Projectile : MonoBehaviour
 
     private void Update()
     {
-        _existenceTime += Time.deltaTime;
-        if (_existenceTime < MaxExistenceTime)
-        {
-            _movement.Move(transform.up);
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
-
+        _movement.Move(transform.up);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Terrain")
+        if (collision.gameObject.layer == 8)
         {
             Destroy(gameObject);
         }
         else if ((collision.gameObject.tag == "Character" || collision.gameObject.tag == "Player") && collision.gameObject != Shooter)
         {
-            if(!_used)
+            if (!_used)
             {
                 collision.gameObject.GetComponent<Combat>().TakeHit(Damage);
                 _used = true;
