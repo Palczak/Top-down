@@ -188,15 +188,5 @@ public class GridNodes : MonoBehaviour
                 }
             }
         }
-
-        var walls = GameObject.FindGameObjectsWithTag("Terrain");
-        foreach (var wall in walls)
-        {
-            Vector3 scale = wall.transform.localScale;
-            scale.x = (float)Math.Floor(scale.x);
-            scale.y = (float)Math.Floor(scale.y);
-            wall.transform.localScale = scale;
-        }
-
     }
 }
