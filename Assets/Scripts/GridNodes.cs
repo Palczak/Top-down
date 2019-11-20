@@ -159,6 +159,14 @@ public class GridNodes : MonoBehaviour
             }
         }
 
+        //This loop will slightly size up all walls to ensure all raycasts won't go thru tips.
+        var walls = GameObject.FindGameObjectsWithTag("Terrain");
+        foreach (var wall in walls)
+        {
+            Vector3 transformScale = wall.transform.localScale;
+            wall.GetComponent<BoxCollider2D>().size = new Vector2((transformScale.x + 0.2f) / transformScale.x, (transformScale.y + 0.2f) / transformScale.y);
+        }
+
         int layerMask = LayerMask.GetMask("Walls");
         for (int i = 0; i < _nodes.GetLength(0); i++)
         {
@@ -187,6 +195,11 @@ public class GridNodes : MonoBehaviour
                     Debug.DrawRay(currentNodePosition, debugTarget - currentNodePosition, Color.yellow, float.PositiveInfinity);
                 }
             }
+        }
+
+        foreach (var wall in walls)
+        {
+            wall.GetComponent<BoxCollider2D>().size = new Vector2(1, 1);
         }
     }
 }

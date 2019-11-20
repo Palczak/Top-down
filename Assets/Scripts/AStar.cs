@@ -33,6 +33,10 @@ namespace Assets.Scripts
             Node bestNode = null;
             foreach (var node in _nodes)
             {
+                if(!node.HasNeighbors())
+                {
+                    continue;
+                }
                 double xCurrentOffset = Math.Abs(node.X - vector.x);
                 double yCurrentOffset = Math.Abs(node.Y - vector.y);
                 double currentOffset = (xCurrentOffset + yCurrentOffset) / 2;

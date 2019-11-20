@@ -28,5 +28,10 @@ namespace Assets.Scripts
         {
             _neighborIndexes.Add(new Tuple<int, int>(x, y));
         }
+
+        public bool HasNeighbors()
+        {
+            return _neighborIndexes.Count != 0;
+        }
     }
 }
