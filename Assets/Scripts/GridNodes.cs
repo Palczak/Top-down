@@ -7,6 +7,7 @@ public class GridNodes : MonoBehaviour
 {
     public GameObject Node;
     private Node[,] _nodes { get; set; }
+    public Node[,] Nodes { get { return _nodes; } }
 
     private enum Direction
     {
@@ -160,6 +161,7 @@ public class GridNodes : MonoBehaviour
                 //node.transform.position = new Vector3(x, y, 0);
             }
         }
+
         //This loop will slightly size up all walls to ensure all raycasts won't go thru tips.
         var walls = GameObject.FindGameObjectsWithTag("Terrain");
         foreach (var wall in walls)
@@ -183,18 +185,18 @@ public class GridNodes : MonoBehaviour
                     var hit = Physics2D.Raycast(currentNodePosition, target - currentNodePosition, 1.42f, layerMask);
                     if (hit.collider == null)
                     {
-                        Debug.DrawRay(currentNodePosition, target - currentNodePosition, Color.yellow, float.PositiveInfinity);
                         AddNieghtborByDirection(direction, i, j);
                     }
                 }
 
                 //Debug loop
+                /*
                 foreach (var value in curentNode.NeighborIndexes)
                 {
                     var debugTarget = new Vector3(_nodes[value.Item1, value.Item2].X, _nodes[value.Item1, value.Item2].Y, 0);
-
                     Debug.DrawRay(currentNodePosition, debugTarget - currentNodePosition, Color.yellow, float.PositiveInfinity);
                 }
+                */
             }
         }
 

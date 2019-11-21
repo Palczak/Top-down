@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 575d65d020e272844807d2c3b5daea9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Node: {fileID: 8126913423905388123, guid: 29a8da2195425e94597ba585a328455e, type: 3}
 --- !u!1001 &9170360886237154059
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -19,6 +20,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2446504280009435585, guid: f00858d552d8b704d8a2e841bd58f717,
+        type: 3}
+      propertyPath: m_Name
+      value: Enemy
+      objectReference: {fileID: 0}
     - target: {fileID: 8317401954577171436, guid: f00858d552d8b704d8a2e841bd58f717,
         type: 3}
       propertyPath: m_Color.g
@@ -28,11 +34,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Color.b
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2446504280009435585, guid: f00858d552d8b704d8a2e841bd58f717,
-        type: 3}
-      propertyPath: m_Name
-      value: Enemy
       objectReference: {fileID: 0}
     - target: {fileID: 2048106158996910402, guid: f00858d552d8b704d8a2e841bd58f717,
         type: 3}
