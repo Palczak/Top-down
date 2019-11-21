@@ -153,12 +153,13 @@ public class GridNodes : MonoBehaviour
                 int x = (int)((i - 1 + grid.cellSize.x) - gridSize.x / 2);
                 int y = (int)((j - 1 + grid.cellSize.y) - gridSize.y / 2);
                 _nodes[i, j] = new Node(x, y);
+                //node posision in array equals node.x + floor(gridSize.x / 2), node.y + floor(gridSize.y / 2)
+
                 //Lines below are for debug only
                 //GameObject node = Instantiate(Node);
                 //node.transform.position = new Vector3(x, y, 0);
             }
         }
-
         //This loop will slightly size up all walls to ensure all raycasts won't go thru tips.
         var walls = GameObject.FindGameObjectsWithTag("Terrain");
         foreach (var wall in walls)

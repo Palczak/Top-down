@@ -9,9 +9,9 @@ namespace Assets.Scripts
 {
     class AStar
     {
-        Node[] _nodes { get; set; }
+        Node[,] _nodes { get; set; }
 
-        public AStar(Node[] nodes)
+        public AStar(Node[,] nodes)
         {
             _nodes = nodes;
         }
@@ -23,17 +23,18 @@ namespace Assets.Scripts
             List<Node> path = new List<Node>();
 
 
-
+            
             return path;
         }
 
         private Node VectorToNode(Vector3 vector)
         {
+            /*
             double bestOffset = double.PositiveInfinity;
             Node bestNode = null;
             foreach (var node in _nodes)
             {
-                if(!node.HasNeighbors())
+                if(!node.HasNeighbors)
                 {
                     continue;
                 }
@@ -51,6 +52,10 @@ namespace Assets.Scripts
                 }
             }
             return bestNode;
+            */
+            int indexX = (int)Math.Round(vector.x) + (int)Math.Floor(_nodes.GetLength(0) / 2f);
+            int indexY = (int)Math.Round(vector.y) + (int)Math.Floor(_nodes.GetLength(1) / 2f);
+            return _nodes[indexX, indexY];
         }
     }
 }

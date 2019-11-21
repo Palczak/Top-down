@@ -9,6 +9,8 @@ namespace Assets.Scripts
         public int Y { get; set; }
         private List<Tuple<int, int>> _neighborIndexes;
         public IEnumerable<Tuple<int, int>> NeighborIndexes { get { return _neighborIndexes; } }
+        public bool HasNeighbors { get { return _neighborIndexes.Count != 0; } }
+
 
         public Node(int x, int y)
         {
@@ -27,11 +29,6 @@ namespace Assets.Scripts
         public void AddNeighborIndex(int x, int y)
         {
             _neighborIndexes.Add(new Tuple<int, int>(x, y));
-        }
-
-        public bool HasNeighbors()
-        {
-            return _neighborIndexes.Count != 0;
         }
     }
 }
