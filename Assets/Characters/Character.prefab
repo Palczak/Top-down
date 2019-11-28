@@ -132,7 +132,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3eb3491b256be1848963b52f10971d9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Speed: 3
+  Speed: 1.5
 --- !u!114 &101714988942506284
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -147,7 +147,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Projectile: {fileID: 7732128421791588789, guid: 75fc760ee7c24e84eb80da9436c7c04b,
     type: 3}
-  FireRateRPM: 300
+  FireRateRPM: 150
   MaxHitPoints: 10
   _currentHitPoints: 0
   _pauseBetweenShots: 0

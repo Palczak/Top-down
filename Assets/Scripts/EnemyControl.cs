@@ -3,7 +3,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using System.Linq;
 
 public class EnemyControl : MonoBehaviour
 {
@@ -11,9 +11,7 @@ public class EnemyControl : MonoBehaviour
     private Movement _movement;
     private Combat _combat;
     private int _layerMask;
-    private PathFinding _pathFinding;
-
-    public GameObject Node;
+    public PathFinding _pathFinding;
 
     private void Start()
     {
@@ -21,16 +19,7 @@ public class EnemyControl : MonoBehaviour
         _target = GameObject.Find("Player");
         _movement = GetComponent<Movement>();
         _combat = GetComponent<Combat>();
-        _pathFinding = new PathFinding(FindObjectOfType<GridNodes>().Nodes);
-
-        var path = _pathFinding.FindPath(transform.position, _target.transform.position);
-        var moveTo = new Vector2(path[path.Count - 1].X, path[path.Count - 1].Y);
-
-        foreach (var node in path)
-        {
-            GameObject visualNode = Instantiate(Node);
-            visualNode.transform.position = new Vector3(node.X, node.Y, 0);
-        }
+        //_pathFinding = new PathFinding(FindObjectOfType<GridNodes>().Nodes);
     }
 
     private void Update()
@@ -40,8 +29,12 @@ public class EnemyControl : MonoBehaviour
             _movement.LookAt(_target.transform.position);
             var hit = Physics2D.Raycast(transform.position, _target.transform.position - transform.position, Mathf.Infinity, _layerMask);
             var path = _pathFinding.FindPath(transform.position, _target.transform.position);
-            var moveTo = new Vector2(path[path.Count - 1].X, path[path.Count - 1].Y);
-            //_movement.Move(moveTo);
+            if (path.Count() != 0)
+            {
+                var moveTo = new Vector2(path.Last().X, path.Last().Y);
+                moveTo -= (Vector2)transform.position;
+                _movement.Move(moveTo);
+            }
 
             if (hit.rigidbody == _target.GetComponent<Rigidbody2D>())
             {

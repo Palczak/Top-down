@@ -16,7 +16,7 @@ namespace Assets.Scripts
             _nodes = nodes;
         }
 
-        public List<Node> FindPath(Vector3 start, Vector3 goal)
+        public IEnumerable<Node> FindPath(Vector3 start, Vector3 goal)
         {
             Node startNode = VectorToNode(start);
             Node goalNode = VectorToNode(goal);
@@ -58,7 +58,7 @@ namespace Assets.Scripts
                         cameFrom.Add(neighbor, current);
                         costsFromStart[neighbor] = startToNeighborCost;
                         costsFromStartPlusEstimatedToGoal[neighbor] = costsFromStart[neighbor] + EstimateCostToNode(neighbor, goalNode);
-                        if(!openNodes.Contains(neighbor))
+                        if (!openNodes.Contains(neighbor))
                         {
                             openNodes.Add(neighbor);
                         }
@@ -68,15 +68,15 @@ namespace Assets.Scripts
             return null;
         }
 
-        private List<Node> ReconstructPath(Dictionary<Node, Node> cameFrom, Node current)
+        private IEnumerable<Node> ReconstructPath(Dictionary<Node, Node> cameFrom, Node current)
         {
             var path = new List<Node>();
-            while(cameFrom.Keys.Contains(current))
+            while (cameFrom.Keys.Contains(current))
             {
                 current = cameFrom[current];
                 path.Add(current);
             }
-
+            path.RemoveAt(path.Count - 1);
             return path;
         }
 
@@ -89,30 +89,6 @@ namespace Assets.Scripts
 
         private Node VectorToNode(Vector3 vector)
         {
-            /*
-            double bestOffset = double.PositiveInfinity;
-            Node bestNode = null;
-            foreach (var node in _nodes)
-            {
-                if(!node.HasNeighbors)
-                {
-                    continue;
-                }
-                double xCurrentOffset = Math.Abs(node.X - vector.x);
-                double yCurrentOffset = Math.Abs(node.Y - vector.y);
-                double currentOffset = (xCurrentOffset + yCurrentOffset) / 2;
-                if (currentOffset < bestOffset)
-                {
-                    bestOffset = currentOffset;
-                    bestNode = node;
-                    if (currentOffset == 0)
-                    {
-                        break;
-                    }
-                }
-            }
-            return bestNode;
-            */
             int indexX = (int)Math.Round(vector.x) + (int)Math.Floor(_nodes.GetLength(0) / 2f);
             int indexY = (int)Math.Round(vector.y) + (int)Math.Floor(_nodes.GetLength(1) / 2f);
             return _nodes[indexX, indexY];

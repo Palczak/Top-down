@@ -96,7 +96,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06173aab672149c418da9672a4fe4ebd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxExistenceTime: 5
   Angle: 0
   Shooter: {fileID: 0}
   Damage: 1
@@ -149,7 +148,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3eb3491b256be1848963b52f10971d9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Speed: 3
+  Speed: 6
 --- !u!58 &8379040452503897998
 CircleCollider2D:
   m_ObjectHideFlags: 0
