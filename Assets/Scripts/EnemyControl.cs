@@ -16,7 +16,8 @@ public class EnemyControl : MonoBehaviour
     private void Start()
     {
         _layerMask = ~LayerMask.GetMask("Enemy");
-        _target = GameObject.Find("Player");
+        //_target = GameObject.Find("Player");
+        _target = GameObject.FindGameObjectWithTag("Player");
         _movement = GetComponent<Movement>();
         _combat = GetComponent<Combat>();
         _pathFinding = new PathFinding(FindObjectOfType<GridNodes>().Nodes);

@@ -5,7 +5,6 @@ using UnityEngine;
 
 public class GridNodes : MonoBehaviour
 {
-    public GameObject Node;
     private Node[,] _nodes { get; set; }
     public Node[,] Nodes { get { return _nodes; } }
 
@@ -143,6 +142,27 @@ public class GridNodes : MonoBehaviour
 
     void Start()
     {
+        InitializeLogicGrid();
+
+        //This loop will slightly size up all walls to ensure all raycasts won't go thru tips.
+        var walls = GameObject.FindGameObjectsWithTag("Terrain");
+        foreach (var wall in walls)
+        {
+            Vector3 transformScale = wall.transform.localScale;
+            wall.GetComponent<BoxCollider2D>().size = new Vector2((transformScale.x + 0.2f) / transformScale.x, (transformScale.y + 0.2f) / transformScale.y);
+        }
+
+        RaycastNodes();
+
+        //Returning to original size of walls.
+        foreach (var wall in walls)
+        {
+            wall.GetComponent<BoxCollider2D>().size = new Vector2(1, 1);
+        }
+    }
+
+    private void InitializeLogicGrid()
+    {
         Grid grid = gameObject.GetComponent<Grid>();
         var gridSize = GetComponent<RectTransform>().sizeDelta;
         _nodes = new Node[(int)gridSize.x + 1, (int)gridSize.y + 1];
@@ -155,21 +175,12 @@ public class GridNodes : MonoBehaviour
                 int y = (int)((j - 1 + grid.cellSize.y) - gridSize.y / 2);
                 _nodes[i, j] = new Node(x, y);
                 //node posision in array equals node.x + floor(gridSize.x / 2), node.y + floor(gridSize.y / 2)
-
-                //Lines below are for debug only
-                //GameObject node = Instantiate(Node);
-                //node.transform.position = new Vector3(x, y, 0);
             }
         }
+    }
 
-        //This loop will slightly size up all walls to ensure all raycasts won't go thru tips.
-        var walls = GameObject.FindGameObjectsWithTag("Terrain");
-        foreach (var wall in walls)
-        {
-            Vector3 transformScale = wall.transform.localScale;
-            wall.GetComponent<BoxCollider2D>().size = new Vector2((transformScale.x + 0.2f) / transformScale.x, (transformScale.y + 0.2f) / transformScale.y);
-        }
-
+    private void RaycastNodes()
+    {
         int layerMask = LayerMask.GetMask("Walls");
         for (int i = 0; i < _nodes.GetLength(0); i++)
         {
@@ -188,21 +199,7 @@ public class GridNodes : MonoBehaviour
                         AddNieghtborByDirection(direction, i, j);
                     }
                 }
-
-                //Debug loop
-                /*
-                foreach (var value in curentNode.NeighborIndexes)
-                {
-                    var debugTarget = new Vector3(_nodes[value.Item1, value.Item2].X, _nodes[value.Item1, value.Item2].Y, 0);
-                    Debug.DrawRay(currentNodePosition, debugTarget - currentNodePosition, Color.yellow, float.PositiveInfinity);
-                }
-                */
             }
-        }
-
-        foreach (var wall in walls)
-        {
-            wall.GetComponent<BoxCollider2D>().size = new Vector2(1, 1);
         }
     }
 }
