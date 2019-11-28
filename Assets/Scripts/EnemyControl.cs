@@ -11,7 +11,7 @@ public class EnemyControl : MonoBehaviour
     private Movement _movement;
     private Combat _combat;
     private int _layerMask;
-    public PathFinding _pathFinding;
+    private PathFinding _pathFinding;
 
     private void Start()
     {
@@ -19,7 +19,7 @@ public class EnemyControl : MonoBehaviour
         _target = GameObject.Find("Player");
         _movement = GetComponent<Movement>();
         _combat = GetComponent<Combat>();
-        //_pathFinding = new PathFinding(FindObjectOfType<GridNodes>().Nodes);
+        _pathFinding = new PathFinding(FindObjectOfType<GridNodes>().Nodes);
     }
 
     private void Update()
