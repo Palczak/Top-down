@@ -140,7 +140,7 @@ public class GridNodes : MonoBehaviour
         }
     }
 
-    void Start()
+    void Awake()
     {
         InitializeLogicGrid();
 
