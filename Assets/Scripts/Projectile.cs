@@ -28,11 +28,13 @@ public class Projectile : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if (collision.gameObject == null)
+            return;
         if (collision.gameObject.layer == 8)
         {
             Destroy(gameObject);
         }
-        else if ((collision.gameObject.tag == "Character" || collision.gameObject.tag == "Player") && (collision.gameObject != Shooter && collision.gameObject.tag != Shooter.tag))
+        else if (IsCharacterHit(collision) && !IsFriendlyFire(collision))
         {
             if (!_used)
             {
@@ -41,5 +43,15 @@ public class Projectile : MonoBehaviour
             }
             Destroy(gameObject);
         }
+    }
+
+    private bool IsCharacterHit(Collider2D collision)
+    {
+        return collision.gameObject.tag == "Character" || collision.gameObject.tag == "Player";
+    }
+
+    private bool IsFriendlyFire(Collider2D collision)
+    {
+        return collision.gameObject == Shooter || collision.gameObject.tag == Shooter.tag;
     }
 }
