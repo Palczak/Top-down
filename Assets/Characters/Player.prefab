@@ -44,16 +44,6 @@ PrefabInstance:
       propertyPath: m_Color.b
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: -1747922667242828847, guid: f00858d552d8b704d8a2e841bd58f717,
-        type: 3}
-      propertyPath: Speed
-      value: 2.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 5532706809430188189, guid: f00858d552d8b704d8a2e841bd58f717,
-        type: 3}
-      propertyPath: m_Mass
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 2048106158996910402, guid: f00858d552d8b704d8a2e841bd58f717,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -109,6 +99,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5532706809430188189, guid: f00858d552d8b704d8a2e841bd58f717,
+        type: 3}
+      propertyPath: m_Mass
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -1747922667242828847, guid: f00858d552d8b704d8a2e841bd58f717,
+        type: 3}
+      propertyPath: Speed
+      value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 101714988942506284, guid: f00858d552d8b704d8a2e841bd58f717,
+        type: 3}
+      propertyPath: Projectile
+      value: 
+      objectReference: {fileID: 7605384489528830523, guid: 8c216b536ec6e784bb11ff748e6edee9,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f00858d552d8b704d8a2e841bd58f717, type: 3}
 --- !u!1 &2910243675374076608 stripped
