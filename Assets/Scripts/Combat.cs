@@ -12,6 +12,8 @@ public class Combat : MonoBehaviour
     [SerializeField]
     private float _shotTimer;
 
+    public GameObject HealthBar;
+
     private void Start()
     {
         _pauseBetweenShots = 60f / FireRateRPM;
@@ -30,16 +32,22 @@ public class Combat : MonoBehaviour
 
     public void TakeHit(int damage)
     {
-        _currentHitPoints = _currentHitPoints - damage;
-        if(_currentHitPoints == 0)
+        ChangeHitPoints(-damage);
+        if (_currentHitPoints == 0)
         {
             Destroy(gameObject);
         }
     }
 
+    private void ChangeHitPoints(int delta)
+    {
+        _currentHitPoints = _currentHitPoints + delta;
+        HealthBar.transform.localScale = new Vector3(_currentHitPoints * 1.0f / MaxHitPoints, 0.1f, 1);
+    }
+
     public void Shoot(GameObject shooter)
-    {   
-        if(_shotTimer >= _pauseBetweenShots)
+    {
+        if (_shotTimer >= _pauseBetweenShots)
         {
             Projectile projectile = Instantiate(Projectile);
             projectile.Shooter = shooter;
