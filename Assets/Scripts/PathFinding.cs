@@ -55,6 +55,10 @@ namespace Assets.Scripts
                     }
                     if (startToNeighborCost < costsFromStart[neighbor])
                     {
+                        if(cameFrom.ContainsKey(neighbor))
+                        {
+                            cameFrom.Remove(neighbor);
+                        }
                         cameFrom.Add(neighbor, current);
                         costsFromStart[neighbor] = startToNeighborCost;
                         costsFromStartPlusEstimatedToGoal[neighbor] = costsFromStart[neighbor] + EstimateCostToNode(neighbor, goalNode);
@@ -83,9 +87,8 @@ namespace Assets.Scripts
         //In pseudo code it is called h()
         private double EstimateCostToNode(Node current, Node target)
         {
-            return Vector2.Distance(new Vector2(current.X, current.Y), new Vector2(target.X, target.Y));
+            return Vector2.Distance(new Vector2(current.X, current.Y), new Vector2(target.X, target.Y)) * target.Cost;
         }
-
 
         private Node VectorToNode(Vector3 vector)
         {

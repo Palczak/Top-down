@@ -8,6 +8,9 @@ public class GridNodes : MonoBehaviour
     private Node[,] _nodes { get; set; }
     public Node[,] Nodes { get { return _nodes; } }
 
+    private GameObject[] _enemies { get; set; }
+    private GameObject _player { get; set; }
+
     private enum Direction
     {
         Left,
@@ -18,6 +21,27 @@ public class GridNodes : MonoBehaviour
         RightBottom,
         Bottom,
         LeftBottom
+    }
+
+    private void Update()
+    {
+        EstimateCosts();
+    }
+
+    private void EstimateCosts()
+    {
+        foreach (var node in _nodes)
+        {
+            node.Cost = 1;
+            if (_player != null)
+            {
+                float playerToNodeArc = Vector2.Dot((node.Position - _player.transform.position).normalized, _player.transform.up);
+                if (playerToNodeArc >= 0.75f)
+                {
+                    node.Cost += 20;
+                }
+            }
+        }
     }
 
     private Vector3 DirectionToRelativePosition(Direction direction)
@@ -142,6 +166,9 @@ public class GridNodes : MonoBehaviour
 
     void Awake()
     {
+        _enemies = GameObject.FindGameObjectsWithTag("Character");
+        _player = GameObject.FindGameObjectWithTag("Player");
+
         InitializeLogicGrid();
 
         //This loop will slightly size up all walls to ensure all raycasts won't go thru tips.

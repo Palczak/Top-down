@@ -8,6 +8,7 @@ public class PlayerControl : MonoBehaviour
     private Movement _movement;
     private Combat _combat;
     private Camera _playerCamera;
+
     void Start()
     {
         _player = GameObject.FindWithTag("Player");
