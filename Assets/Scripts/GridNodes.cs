@@ -11,6 +11,8 @@ public class GridNodes : MonoBehaviour
     private GameObject[] _enemies { get; set; }
     private GameObject _player { get; set; }
 
+    public bool DebugFlag = true;
+
     private enum Direction
     {
         Left,
@@ -224,6 +226,14 @@ public class GridNodes : MonoBehaviour
                     if (hit.collider == null)
                     {
                         AddNieghtborByDirection(direction, i, j);
+                    }
+                    if (DebugFlag)
+                    {
+                        foreach (var value in curentNode.NeighborIndexes)
+                        {
+                            var debugTarget = new Vector3(_nodes[value.Item1, value.Item2].X, _nodes[value.Item1, value.Item2].Y, 0);
+                            Debug.DrawRay(currentNodePosition, debugTarget - currentNodePosition, Color.yellow, float.PositiveInfinity);
+                        }
                     }
                 }
             }
