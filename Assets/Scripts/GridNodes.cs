@@ -40,7 +40,17 @@ public class GridNodes : MonoBehaviour
                 float playerToNodeArc = Vector2.Dot((node.Position - _player.transform.position).normalized, _player.transform.up);
                 if (playerToNodeArc >= 0.75f)
                 {
-                    node.Cost += 20;
+                    node.Cost += 10;
+                }
+            }
+            foreach (GameObject enemy in _enemies)
+            {
+                if (enemy != null)
+                {
+                    if (Vector3.Distance(enemy.transform.position, new Vector3(node.X, node.Y)) < 5)
+                    {
+                        node.Cost += 10;
+                    }
                 }
             }
         }
