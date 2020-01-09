@@ -30,13 +30,14 @@ public class GridNodes : MonoBehaviour
 
     private void EstimateCosts()
     {
-        if(Config.HardMode)
+        float playerToNodeArc = 1;
+        if (Config.HardMode)
         foreach (var node in _nodes)
         {
             node.Cost = 1;
             if (_player != null)
             {
-                float playerToNodeArc = Vector2.Dot((node.Position - _player.transform.position).normalized, _player.transform.up);
+                playerToNodeArc = Vector2.Dot((node.Position - _player.transform.position).normalized, _player.transform.up);
                 if (playerToNodeArc >= 0.75f)
                 {
                     node.Cost += 10;

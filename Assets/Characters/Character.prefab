@@ -228,7 +228,7 @@ MonoBehaviour:
   Projectile: {fileID: 7732128421791588789, guid: 75fc760ee7c24e84eb80da9436c7c04b,
     type: 3}
   FireRateRPM: 150
-  MaxHitPoints: 10
+  MaxHitPoints: 3
   _currentHitPoints: 0
   _pauseBetweenShots: 0
   _shotTimer: 0
