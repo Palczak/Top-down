@@ -11,8 +11,6 @@ public class GridNodes : MonoBehaviour
     private GameObject[] _enemies { get; set; }
     private GameObject _player { get; set; }
 
-    public bool DebugFlag = true;
-
     private enum Direction
     {
         Left,
@@ -32,6 +30,7 @@ public class GridNodes : MonoBehaviour
 
     private void EstimateCosts()
     {
+        if(Config.HardMode)
         foreach (var node in _nodes)
         {
             node.Cost = 1;
@@ -237,7 +236,7 @@ public class GridNodes : MonoBehaviour
                     {
                         AddNieghtborByDirection(direction, i, j);
                     }
-                    if (DebugFlag)
+                    if (Config.Debug)
                     {
                         foreach (var value in curentNode.NeighborIndexes)
                         {
