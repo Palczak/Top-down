@@ -38,7 +38,7 @@ public class GridNodes : MonoBehaviour
             if (_player != null)
             {
                 playerToNodeArc = Vector2.Dot((node.Position - _player.transform.position).normalized, _player.transform.up);
-                if (playerToNodeArc >= 0.75f)
+                if (playerToNodeArc >= 0.75f && (Vector3.Distance(_player.transform.position, new Vector3(node.X, node.Y)) < 10))
                 {
                     node.Cost += 10;
                 }
