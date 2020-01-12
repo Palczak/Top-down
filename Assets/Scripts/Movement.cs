@@ -1,12 +1,7 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Movement : MonoBehaviour
 {
-    private float _velocity;
-    private float _angle;
-
     private Rigidbody2D _rigidBody;
     public float Speed;
 
@@ -15,24 +10,19 @@ public class Movement : MonoBehaviour
         _rigidBody = GetComponent<Rigidbody2D>();
     }
 
-    private void Update()
-    {
-        _angle = transform.rotation.z;
-    }
-
     public void Move(Vector2 inputVector)
     {
         inputVector *= Speed;
         inputVector *= (Time.deltaTime * 2);
         Vector3 moveVector = new Vector3(inputVector.x, inputVector.y);
-       
-        if(inputVector.x != 0 && inputVector.y != 0)
+
+        if (inputVector.x != 0 && inputVector.y != 0)
         {
             inputVector.x /= Mathf.Sqrt(2);
             inputVector.y /= Mathf.Sqrt(2);
         }
-        _rigidBody.MovePosition(transform.position + moveVector);
-        _velocity = Mathf.Sqrt(Mathf.Pow(_rigidBody.velocity.x, 2) + Mathf.Pow(_rigidBody.velocity.y, 2));
+
+        _rigidBody.velocity = moveVector;
     }
 
     public void Forward()
