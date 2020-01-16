@@ -27,8 +27,6 @@ public class EnemyControl : MonoBehaviour
     {
         if (_target != null)
         {
-            _movement.LookAt(_target.transform.position);
-            var hit = Physics2D.Raycast(transform.position, _target.transform.position - transform.position, Mathf.Infinity, _layerMask);
             var path = _pathFinding.FindPath(transform.position, _target.transform.position);
             if (path.Count() != 0)
             {
@@ -37,9 +35,18 @@ public class EnemyControl : MonoBehaviour
                 _movement.Move(moveTo);
             }
 
-            if (hit.rigidbody == _target.GetComponent<Rigidbody2D>())
+            if (Config.HardMode)
             {
-                _combat.Shoot(gameObject);
+
+            }
+            else
+            {
+                _movement.LookAt(_target.transform.position);
+                var rayHit = Physics2D.Raycast(transform.position, _target.transform.position - transform.position, Mathf.Infinity, _layerMask);
+                if (rayHit.rigidbody == _target.GetComponent<Rigidbody2D>())
+                {
+                    _combat.Shoot(gameObject);
+                }
             }
         }
     }

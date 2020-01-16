@@ -13,8 +13,7 @@ public class Movement : MonoBehaviour
     public void Move(Vector2 inputVector)
     {
         inputVector *= Speed;
-        inputVector *= (Time.deltaTime * 2);
-        Vector3 moveVector = new Vector3(inputVector.x, inputVector.y);
+        //inputVector *= (Time.deltaTime);
 
         if (inputVector.x != 0 && inputVector.y != 0)
         {
@@ -22,7 +21,10 @@ public class Movement : MonoBehaviour
             inputVector.y /= Mathf.Sqrt(2);
         }
 
+        Vector3 moveVector = new Vector3(inputVector.x, inputVector.y);
+
         _rigidBody.velocity = moveVector;
+        //_rigidBody.MovePosition(transform.position + moveVector);
     }
 
     public void Forward()
