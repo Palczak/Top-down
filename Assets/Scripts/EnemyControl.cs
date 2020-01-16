@@ -38,14 +38,14 @@ public class EnemyControl : MonoBehaviour
             if (Config.HardMode)
             {
                 Vector2 targetVelocity = _target.GetComponent<Rigidbody2D>().velocity;
-                float missileSpeed = _combat.Projectile.GetComponent<Movement>().Speed;
+                float missileSpeed = _combat.Projectile.GetComponent<Movement>().Speed * 0.75f;
 
                 float a = (targetVelocity.x * targetVelocity.x) + (targetVelocity.y * targetVelocity.y) - (missileSpeed * missileSpeed);
                 float b = 2 * (targetVelocity.x * (_target.transform.position.x - gameObject.transform.position.x)
                     + targetVelocity.y * (_target.transform.position.y - gameObject.transform.position.y));
                 float c = ((_target.transform.position.x - gameObject.transform.position.x) * (_target.transform.position.x - gameObject.transform.position.x)) +
                     ((_target.transform.position.y - gameObject.transform.position.y) * (_target.transform.position.y - gameObject.transform.position.y));
-
+  
                 float disc = b * b - (4 * a * c);
 
                 float t1 = (-1 * b + Mathf.Sqrt(disc)) / (2 * a);
