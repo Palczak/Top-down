@@ -5,8 +5,7 @@ public class Combat : MonoBehaviour
     public Projectile Projectile;
     public uint FireRateRPM;
     public int MaxHitPoints;
-    [SerializeField]
-    private int _currentHitPoints;
+    public int CurrentHitPoints;
     [SerializeField]
     private float _pauseBetweenShots;
     [SerializeField]
@@ -14,12 +13,14 @@ public class Combat : MonoBehaviour
 
     public GameObject HealthBar;
 
+    public CombatManager CombatManager;
+
     private void Start()
     {
         _pauseBetweenShots = 60f / FireRateRPM;
         _shotTimer = 0;
 
-        _currentHitPoints = MaxHitPoints;
+        CurrentHitPoints = MaxHitPoints;
     }
 
     private void Update()
@@ -33,16 +34,16 @@ public class Combat : MonoBehaviour
     public void TakeHit(int damage)
     {
         ChangeHitPoints(-damage);
-        if (_currentHitPoints == 0)
+        if (CurrentHitPoints == 0)
         {
-            Destroy(gameObject);
+            CombatManager.Kill(gameObject);
         }
     }
 
     private void ChangeHitPoints(int delta)
     {
-        _currentHitPoints = _currentHitPoints + delta;
-        HealthBar.transform.localScale = new Vector3(_currentHitPoints * 1.0f / MaxHitPoints, 0.1f, 1);
+        CurrentHitPoints = CurrentHitPoints + delta;
+        HealthBar.transform.localScale = new Vector3(CurrentHitPoints * 1.0f / MaxHitPoints, 0.1f, 1);
     }
 
     public void Shoot(GameObject shooter)
