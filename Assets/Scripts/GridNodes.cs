@@ -11,6 +11,8 @@ public class GridNodes : MonoBehaviour
     private GameObject[] _enemies { get; set; }
     private GameObject _player { get; set; }
 
+    public GameObject DebugNode;
+
     private enum Direction
     {
         Left,
@@ -214,6 +216,11 @@ public class GridNodes : MonoBehaviour
                 int y = (int)((j - 1 + grid.cellSize.y) - gridSize.y / 2);
                 _nodes[i, j] = new Node(x, y);
                 //node posision in array equals node.x + floor(gridSize.x / 2), node.y + floor(gridSize.y / 2)
+                if(Config.Debug)
+                {
+                    var debugNode = GameObject.Instantiate(DebugNode);
+                    debugNode.transform.position = new Vector3(x, y);
+                }
             }
         }
     }

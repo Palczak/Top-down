@@ -61,4 +61,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8caefd1ce206575459edad4e5bf3d30d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Node: {fileID: 8126913423905388123, guid: 29a8da2195425e94597ba585a328455e, type: 3}
+  DebugNode: {fileID: 8126913423905388123, guid: 29a8da2195425e94597ba585a328455e,
+    type: 3}
