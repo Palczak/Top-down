@@ -9,7 +9,7 @@ public class EnemyControl : MonoBehaviour
     private Combat _combat;
     private int _layerMask;
     private PathFinding _pathFinding;
-
+    
     private void Start()
     {
         _layerMask = ~LayerMask.GetMask("Enemy");
@@ -72,6 +72,14 @@ public class EnemyControl : MonoBehaviour
     private void MoveToTarget()
     {
         var path = _pathFinding.FindPath(transform.position, _target.transform.position);
+        if(Config.DrawPath)
+        {
+            var debugPath = path.ToArray();
+            for (int i = 0; i < path.Count()-1; i++)
+            {
+                Debug.DrawRay(debugPath[i].Position, debugPath[i].Position - debugPath[i + 1].Position, Color.red, Time.deltaTime);
+            }
+        }
         if (path.Count() != 0)
         {
             var moveTo = new Vector2(path.Last().X, path.Last().Y);
