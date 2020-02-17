@@ -11,6 +11,7 @@ public class CombatManager : MonoBehaviour
     public static int RemainingPlayerHP;
     public static double TimePlayed;
     public static bool Win;
+    public static int EnemyHPSum;
     void Start()
     {
         Enemies = new List<GameObject>(GameObject.FindGameObjectsWithTag("Character"));
@@ -57,6 +58,11 @@ public class CombatManager : MonoBehaviour
         Win = false;
         RemainingPlayerHP = 0;
         TimePlayed = _timer;
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        EnemyHPSum = 0;
+        foreach(var enemy in Enemies)
+        {
+            EnemyHPSum += enemy.GetComponent<Combat>().CurrentHitPoints;
+        }
+        SceneManager. LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 }

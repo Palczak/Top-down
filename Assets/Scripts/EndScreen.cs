@@ -11,6 +11,7 @@ public class EndScreen : MonoBehaviour
 
     public Text WinLabel;
     public Text TimeLabel;
+    public Text RemainingHPTitle;
     public Text RemainingHPLabel;
 
     public void ReturnToMainMenu()
@@ -25,12 +26,18 @@ public class EndScreen : MonoBehaviour
         _remainingHP = CombatManager.RemainingPlayerHP;
 
         if (_win)
+        {
             WinLabel.text = "Wygrałeś";
+            RemainingHPTitle.text = "Pozostałe zdrowie awatara:";
+            RemainingHPLabel.text = _remainingHP.ToString();
+        }
         else
+        {
             WinLabel.text = "Przegrałeś";
+            RemainingHPTitle.text = "Pozostałe zdrowie wszystkich przeciwników:";
+            RemainingHPLabel.text = CombatManager.EnemyHPSum.ToString();
+        }
 
-        TimeLabel.text = Math.Round(_time,2).ToString() + "s";
-
-        RemainingHPLabel.text = _remainingHP.ToString();
+        TimeLabel.text = Math.Round(_time, 2).ToString() + "s";
     }
 }
