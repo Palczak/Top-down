@@ -283,12 +283,12 @@ PrefabInstance:
     - target: {fileID: 7147211581787585097, guid: dc5586c1d052cea43bc891ddc19b4c17,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 16.27
+      value: 17
       objectReference: {fileID: 0}
     - target: {fileID: 7147211581787585097, guid: dc5586c1d052cea43bc891ddc19b4c17,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.62
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 7147211581787585097, guid: dc5586c1d052cea43bc891ddc19b4c17,
         type: 3}
@@ -352,12 +352,12 @@ PrefabInstance:
     - target: {fileID: 7147211581787585097, guid: dc5586c1d052cea43bc891ddc19b4c17,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 17.08
+      value: 17
       objectReference: {fileID: 0}
     - target: {fileID: 7147211581787585097, guid: dc5586c1d052cea43bc891ddc19b4c17,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -6.26
+      value: -7
       objectReference: {fileID: 0}
     - target: {fileID: 7147211581787585097, guid: dc5586c1d052cea43bc891ddc19b4c17,
         type: 3}
@@ -697,12 +697,12 @@ PrefabInstance:
     - target: {fileID: 7147211581787585097, guid: dc5586c1d052cea43bc891ddc19b4c17,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -16.42
+      value: -17
       objectReference: {fileID: 0}
     - target: {fileID: 7147211581787585097, guid: dc5586c1d052cea43bc891ddc19b4c17,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.66
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 7147211581787585097, guid: dc5586c1d052cea43bc891ddc19b4c17,
         type: 3}
@@ -732,7 +732,7 @@ PrefabInstance:
     - target: {fileID: 7147211581787585097, guid: dc5586c1d052cea43bc891ddc19b4c17,
         type: 3}
       propertyPath: m_RootOrder
-      value: 10
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 7147211581787585097, guid: dc5586c1d052cea43bc891ddc19b4c17,
         type: 3}
@@ -919,12 +919,12 @@ PrefabInstance:
     - target: {fileID: 7147211581787585097, guid: dc5586c1d052cea43bc891ddc19b4c17,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 15.83
+      value: 17
       objectReference: {fileID: 0}
     - target: {fileID: 7147211581787585097, guid: dc5586c1d052cea43bc891ddc19b4c17,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 7.84
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 7147211581787585097, guid: dc5586c1d052cea43bc891ddc19b4c17,
         type: 3}
@@ -1398,12 +1398,12 @@ PrefabInstance:
     - target: {fileID: 7147211581787585097, guid: dc5586c1d052cea43bc891ddc19b4c17,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -16.34
+      value: -17
       objectReference: {fileID: 0}
     - target: {fileID: 7147211581787585097, guid: dc5586c1d052cea43bc891ddc19b4c17,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -7.54
+      value: -7
       objectReference: {fileID: 0}
     - target: {fileID: 7147211581787585097, guid: dc5586c1d052cea43bc891ddc19b4c17,
         type: 3}
@@ -1433,7 +1433,7 @@ PrefabInstance:
     - target: {fileID: 7147211581787585097, guid: dc5586c1d052cea43bc891ddc19b4c17,
         type: 3}
       propertyPath: m_RootOrder
-      value: 9
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 7147211581787585097, guid: dc5586c1d052cea43bc891ddc19b4c17,
         type: 3}
@@ -1684,12 +1684,12 @@ PrefabInstance:
     - target: {fileID: 7147211581787585097, guid: dc5586c1d052cea43bc891ddc19b4c17,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -16.2
+      value: -17
       objectReference: {fileID: 0}
     - target: {fileID: 7147211581787585097, guid: dc5586c1d052cea43bc891ddc19b4c17,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 6.04
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 7147211581787585097, guid: dc5586c1d052cea43bc891ddc19b4c17,
         type: 3}
