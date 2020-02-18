@@ -12,19 +12,9 @@ public class Movement : MonoBehaviour
 
     public void Move(Vector2 inputVector)
     {
-        inputVector *= Speed;
-        //inputVector *= (Time.deltaTime);
-
-        if (inputVector.x != 0 && inputVector.y != 0)
-        {
-            inputVector.x /= Mathf.Sqrt(2);
-            inputVector.y /= Mathf.Sqrt(2);
-        }
-
-        Vector3 moveVector = new Vector3(inputVector.x, inputVector.y);
-
+        var moveVector = inputVector.normalized;
+        moveVector *= Speed;
         _rigidBody.velocity = moveVector;
-        //_rigidBody.MovePosition(transform.position + moveVector);
     }
 
     public void Forward()

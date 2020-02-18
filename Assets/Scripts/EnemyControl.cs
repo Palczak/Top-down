@@ -91,7 +91,7 @@ public class EnemyControl : MonoBehaviour
     private Vector3 PredictTargetMovement()
     {
         Vector2 targetVelocity = _target.GetComponent<Rigidbody2D>().velocity;
-        float missileSpeed = _combat.Projectile.GetComponent<Movement>().Speed * 0.75f;
+        float missileSpeed = _combat.Projectile.GetComponent<Movement>().Speed;
         float a = (targetVelocity.x * targetVelocity.x) + (targetVelocity.y * targetVelocity.y) - (missileSpeed * missileSpeed);
         float b = 2 * (targetVelocity.x * (_target.transform.position.x - gameObject.transform.position.x)
             + targetVelocity.y * (_target.transform.position.y - gameObject.transform.position.y));
@@ -100,7 +100,7 @@ public class EnemyControl : MonoBehaviour
         float disc = b * b - (4 * a * c);
         float t1 = (-1 * b + Mathf.Sqrt(disc)) / (2 * a);
         float t2 = (-1 * b - Mathf.Sqrt(disc)) / (2 * a);
-        float t = Mathf.Max(t1, t2);// let us take the larger time value 
+        float t = Mathf.Max(t1, t2);
         float aimX = (targetVelocity.x * t) + _target.transform.position.x;
         float aimY = _target.transform.position.y + (targetVelocity.y * t);
 
